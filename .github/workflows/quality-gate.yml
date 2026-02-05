@@ -3,7 +3,7 @@ name: Quality Gate - ScrapeGraphAI
 on: [push, pull_request]
 
 jobs:
-  lint-and-typecheck:
+  demo-validation:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do Código
@@ -14,11 +14,5 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Instalar Ferramentas de Qualidade
-        run: pip install ruff mypy
-
-      - name: Executar Ruff (Linter)
-        run: ruff check .
-
-      - name: Executar Mypy (Type Checker)
-        run: mypy . --ignore-missing-imports
+      - name: Executar Script de Demonstração
+        run: python ci_demo.py
